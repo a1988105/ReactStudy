@@ -11,7 +11,8 @@ const server = new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     stats: {
         chunks: false,
-        colors: true
+        colors: true,
+        hot: true
     }
 });
 

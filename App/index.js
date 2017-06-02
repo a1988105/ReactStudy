@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-/*
+
 class App extends React.Component {
     render() {
         return(
@@ -10,8 +10,8 @@ class App extends React.Component {
         )
     }
 }
-*/
 
+/*
 const App = () => {
     return (
         <dev>
@@ -19,6 +19,7 @@ const App = () => {
         </dev>
     )
 }
+*/
 
 ReactDOM.render(
     <App />,
