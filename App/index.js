@@ -7,7 +7,7 @@ import styles from '../css/style.css';
 const rootElement = document.getElementById('app');
 
 const renderApp = () => {
-    const App = require('./app')
+  const App = require('./app')
   render(
     <AppContainer>
       <div>
@@ -21,7 +21,7 @@ const renderApp = () => {
 renderApp(rootElement);
 
 if (module.hot) {
-	module.hot.accept(
+  module.hot.accept(
     './app.js',
     () => renderApp(rootElement)
   );

@@ -11,16 +11,16 @@ class Keyboard extends React.Component {
 
     render() {
         const btn = [];
-        this.props.kb.forEach((item)=>{
-            item.forEach((i)=>{
+        this.props.kb.forEach((item) => {
+            item.forEach((i) => {
                 // To resolve warning of "Each child in an array or iterator should have a unique "key" prop."
                 const keyid = 'kb_' + i;
                 const clsssn = (this.props.bNum == i) ? 'btn active' : 'btn';
-               
-                btn.push(<input key={keyid.toString()} type='button' className={clsssn} value={i} onClick={()=> this.handleClick(i)}/>);
+
+                btn.push(<input key={keyid.toString()} type='button' className={clsssn} value={i} onClick={() => this.handleClick(i)} />);
             })
         });
-        return(
+        return (
             <div>
                 {btn}
             </div>
