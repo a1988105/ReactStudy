@@ -11,6 +11,13 @@
 .btn{
    width: 24.4px;
 }
+.btn:hover{
+    background-color: darkgray;
+}
+
+.btn.active{
+    background-color: darkgray;
+}
 
 #app{
     border: 1px solid;

@@ -2,35 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Keyboard extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            value  : 0
-        };
-    }
+
     handleClick = (p) => {
-        if (typeof this.props.onChange === 'function') {
-            this.props.onChange('', p);
+        if (typeof this.props.onClickfn === 'function') {
+            this.props.onClickfn(p);
         }
     }
+
     render() {
+        const btn = [];
+        this.props.kb.forEach((item)=>{
+            item.forEach((i)=>{
+                // To resolve warning of "Each child in an array or iterator should have a unique "key" prop."
+                const keyid = 'kb_' + i;
+                const clsssn = (this.props.bNum == i) ? 'btn active' : 'btn';
+               
+                btn.push(<input key={keyid.toString()} type='button' className={clsssn} value={i} onClick={()=> this.handleClick(i)}/>);
+            })
+        });
         return(
             <div>
-              <input type='button' className='btn' value='+' onClick={() => this.handleClick('+')}/>
-              <input type='button' value='-'/>
-              <input type='button' value='1'/>
-              <input type='button' value='2'/>
-              <input type='button' value='3'/>
+                {btn}
             </div>
         )
     }
-}
-
-const keybtn = (props)=>
-{
-    return(
-        <input type='button' value={this.props.val}/>
-    )
 }
 
 module.exports = Keyboard;

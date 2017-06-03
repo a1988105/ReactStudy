@@ -6,26 +6,38 @@ class App extends Component {
         this.state = {
             value   : 0,
             kbdata  : [
+                [1,2,3,'+','-']
+            ],
+            baseNum : 1
+            /*
+            kbdata  : [
                 [7,8,9,'C'],
                 [4,5,6,'+'],
                 [1,2,3,'-'],
-                [0,'.','','=']
-            ]
+                ['  ','0',' ','=']
+            ],
+            operate : []
+            */
         };
     }
-    handleFn = (action ,p) => {
-        switch (action)
+    handleFn = (p) => {
+        switch (p)
         {
-            case 'add':
-            {
-                p = +p + 1;
-            }
-            default:
+            case '+':
+            this.setState({
+                value : this.state.value + this.state.baseNum
+            })
             break;
+            case '-':
+            this.setState({
+                value : this.state.value - this.state.baseNum
+            })
+            break;
+            default:
+            this.setState({
+                baseNum : p
+            })
         }
-        this.setState({
-            value : p
-        })
     }
     render() {
         const Keyboard = require('./keyboard.js')
@@ -33,10 +45,11 @@ class App extends Component {
         return (
             <div>
                 <Result val={this.state.value} />
-                <Keyboard onChange={this.handleFn} />
+                <Keyboard onClickfn={this.handleFn} kb={this.state.kbdata} bNum={this.state.baseNum} />
             </div>
         )
     }
 }
+
 
 module.exports = App;
