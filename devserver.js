@@ -9,10 +9,10 @@ const PORT = 9527;
 const server = new WebpackDevServer(webpack(config), {
     contentBase: path.join(__dirname, 'output'),
     publicPath: config.output.publicPath,
+    hot: true,
     stats: {
         chunks: false,
-        colors: true,
-        hot: true
+        colors: true
     }
 });
 
