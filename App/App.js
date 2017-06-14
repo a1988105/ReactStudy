@@ -13,11 +13,11 @@ class App extends Component {
             history : []
         };
     }
-    calculateFn = (p) => {
+    calculateFn = (enterValue) => {
         let {state}  = this;
         let newhistory = [];
         newhistory.push(...state.history);
-        switch (p)
+        switch (enterValue)
         {
             case '+':
             {
@@ -41,7 +41,7 @@ class App extends Component {
             }
             default:
             this.setState({
-                baseNum : p
+                baseNum : enterValue
             })
         }
     }

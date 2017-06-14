@@ -1,12 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 
 class Keyboard extends React.Component {
 
-    handleClick = (p) => {
-        this.props.calculatefn(p);
+    handleClick = (enterValue) => {
+        this.props.calculatefn(enterValue);
     }
 
     render() {
