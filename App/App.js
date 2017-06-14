@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Keyboard from './keyboard';
 import Result from './Result';
 import Historys from './historys';
+import Constant from './Constant/keyboardData';
 
-const kbdata = [[1,2,3,'+','-']];
 class App extends Component {
     constructor(props) {
         super(props);
@@ -13,24 +13,29 @@ class App extends Component {
             history : []
         };
     }
-    handleFn = (p) => {
+    calculateFn = (p) => {
+        let {state}  = this;
+        let newhistory = [];
+        newhistory.push(...state.history);
         switch (p)
         {
             case '+':
             {
-                let record = { text: '操作 +'+ this.state.baseNum, operate: '-' , value: this.state.baseNum};
-                this.state.history.push(record);
+                let record = { text: '操作 +'+ state.baseNum, operate: '-' , value: state.baseNum};
+                newhistory.push(record);
                 this.setState({
-                    value : this.state.value + this.state.baseNum
+                    value   : state.value + state.baseNum,
+                    history : newhistory
                 })
                 break;
             }
             case '-':
             {
-                let record = { text: '操作 -'+ this.state.baseNum, operate: '+' , value: this.state.baseNum};
-                this.state.history.push(record);
+                let record = { text: '操作 -'+ state.baseNum, operate: '+' , value: state.baseNum};
+                newhistory.push(record);
                 this.setState({
-                    value : this.state.value - this.state.baseNum
+                    value   : state.value - state.baseNum,
+                    history : newhistory
                 })
                 break;
             }
@@ -42,27 +47,33 @@ class App extends Component {
     }
 
     rollbackFn = (data,index) => {
+        let {state} = this;
+        let newhistory = [];
+        newhistory.push(...state.history);
+        newhistory.splice(index,1);
         data.operate == '+' ? 
         (
             this.setState({
-                value : this.state.value + data.value
+                value   : state.value + data.value,
+                history : newhistory
             })
 
-        ):
+        ) :
         (
             this.setState({
-                value : this.state.value - data.value
+                value   : state.value - data.value,
+                history : newhistory
             })
         );
-        this.state.history.splice(index,1);
+
     }
 
     render() {
         return (
             <div>
                 <Result val={this.state.value} />
-                <Keyboard onClickfn={this.handleFn} kb={kbdata} bNum={this.state.baseNum} />
-                <Historys data ={this.state.history} onClickfn={this.rollbackFn} />
+                <Keyboard calculatefn={this.calculateFn} keyboardData={Constant.keyboardData} baseNum={this.state.baseNum} />
+                <Historys data ={this.state.history} rollbackFn={this.rollbackFn} />
             </div>
         )
     }

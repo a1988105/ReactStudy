@@ -1,5 +1,4 @@
 import React from 'react';
-//解構附值
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import styles from '../css/style.css';

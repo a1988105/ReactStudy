@@ -1,11 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-
-const Historys = ({data,onClickfn}) => {
-    const listItems = data.map((d,index) =>
-    <li key={'li_' + index}>{d.text} <input key={index} type='button' value='刪除' onClick={() => onClickfn(d,index)} /></li>
+const Historys = ({data,rollbackFn}) => {
+    const listItems = data.map((data,index) =>
+        <li key={'li_' + index}>{data.text} <input key={index} type='button' value='刪除' onClick={() => rollbackFn(data,index)} /></li>
     );
+
     return (
         <div>
                <ul className='history'>{listItems}</ul>
