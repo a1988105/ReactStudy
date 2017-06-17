@@ -3,15 +3,17 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import styles from '../css/style.css';
 import App from './app';
+import store from './store';
+import { Provider } from 'react-redux';
 
 const rootElement = document.getElementById('app');
 
 const renderApp = () => {
   render(
     <AppContainer>
-      <div>
+      <Provider store={store}>  
         <App />
-      </div>
+      </Provider>
     </AppContainer>,
     rootElement
   );

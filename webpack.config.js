@@ -16,6 +16,7 @@ const webpackConfig = {
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ],
+    devtool: 'source-map',
     module: {
         rules: [
             {

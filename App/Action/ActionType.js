@@ -1,0 +1,8 @@
+const ActionType = {
+    CALCULATE: 'CALCULATE',
+    ROLLBACK: 'ROLLBACK',
+    FETCHDATA: 'FETCHDATA',
+    FETCHDATASUCCESS: 'FETCHDATASUCCESS'
+}
+
+module.exports = ActionType;
