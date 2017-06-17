@@ -1,5 +1,5 @@
 {
-    value   : 0,
-    baseNum : 1,
-    history : []
+  "value": 0,
+  "baseNum": 1,
+  "history": []
 }

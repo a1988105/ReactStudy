@@ -8,10 +8,6 @@ import action from './Action/Action';
 
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {
             state:{
@@ -34,7 +30,6 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return { state };
 }
 const mapDispatchToProps = (dispatch) => ({
