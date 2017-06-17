@@ -53,12 +53,13 @@ const Reducer = (state = initStateFromAjax, action) => {
             }
         }
         case FETCHDATASUCCESS:
-            const {baseNum,value,history} = action.value;
+            const {baseNum,value,history,keyboardData} = action.value;
             return {
                 ...state,
-                baseNum : baseNum,
-                value   : value,
-                history : history,
+                baseNum,
+                value,
+                history,
+                keyboardData,
                 isFetching : false
             };
         case ROLLBACK:

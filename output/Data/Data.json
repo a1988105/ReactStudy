@@ -1,5 +1,6 @@
 {
   "value": 0,
   "baseNum": 1,
-  "history": []
+  "history": [],
+  "keyboardData" : [1,2,3,"+","-"]
 }

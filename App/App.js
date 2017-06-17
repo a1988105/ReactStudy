@@ -17,6 +17,7 @@ class App extends Component {
                 value,
                 baseNum,
                 history,
+                keyboardData,
                 isFetching
             },
             onCalculate,
@@ -27,9 +28,8 @@ class App extends Component {
         {
             return (
                 <div>
-                    
                     <Result val={value} />
-                    <Keyboard calculatefn={onCalculate} keyboardData={Constant.keyboardData} baseNum={baseNum} />
+                    <Keyboard calculatefn={onCalculate} keyboardData={keyboardData} baseNum={baseNum} />
                     <Historys data ={history} rollbackFn={onRollback} />
                 </div>
             )
