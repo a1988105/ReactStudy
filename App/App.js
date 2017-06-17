@@ -8,24 +8,36 @@ import action from './Action/Action';
 
 
 class App extends Component {
+    componentDidMount() {
+        this.props.fetchData();
+    }
     render() {
         const {
             state:{
                 value,
                 baseNum,
-                history
+                history,
+                isFetching
             },
             onCalculate,
             onRollback,
             fetchData
         } = this.props;
-        return (
-            <div>
-                <Result val={value} />
-                <Keyboard calculatefn={onCalculate} keyboardData={Constant.keyboardData} baseNum={baseNum} />
-                <Historys data ={history} rollbackFn={onRollback} />
-            </div>
-        )
+        if (!isFetching)
+        {
+            return (
+                <div>
+                    
+                    <Result val={value} />
+                    <Keyboard calculatefn={onCalculate} keyboardData={Constant.keyboardData} baseNum={baseNum} />
+                    <Historys data ={history} rollbackFn={onRollback} />
+                </div>
+            )
+        }else{
+            return (
+                <div>Loading....</div>
+            )
+        }
     }
 }
 

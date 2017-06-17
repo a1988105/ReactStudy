@@ -14,7 +14,7 @@ const action = {
             .then((response) => response.json())
             .then((data) => dispatch({
                 type: FETCHDATASUCCESS,
-                value: data.value
+                value: data
             }));
         }
     }

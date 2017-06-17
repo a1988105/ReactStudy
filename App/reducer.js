@@ -4,13 +4,17 @@ import {
     ROLLBACK
 } from './Action/ActionType';
 
-const initState = {
+const initStateFromLocal = {
     value   : 0,
     baseNum : 1,
     history : []
 }
 
-const Reducer = (state = initState, action) => {
+const initStateFromAjax = {
+    isFetching : true
+}
+
+const Reducer = (state = initStateFromAjax, action) => {
     switch (action.type) {
         case CALCULATE:
         {
@@ -49,11 +53,13 @@ const Reducer = (state = initState, action) => {
             }
         }
         case FETCHDATASUCCESS:
+            const {baseNum,value,history} = action.value;
             return {
                 ...state,
-                baseNum : action.baseNum,
-                value   : action.value,
-                history : action.history
+                baseNum : baseNum,
+                value   : value,
+                history : history,
+                isFetching : false
             };
         case ROLLBACK:
         {
