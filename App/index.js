@@ -5,6 +5,7 @@ import styles from '../css/style.css';
 import App from './app';
 import store from './store';
 import { Provider } from 'react-redux';
+import "babel-polyfill";
 
 const rootElement = document.getElementById('app');
 

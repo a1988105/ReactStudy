@@ -9,13 +9,13 @@ const action = {
     calculate: (entervalue) => ({ type: CALCULATE, entervalue }),
     rollback: (data, index) =>({ type : ROLLBACK, data, index}),
     fetchData: () => {
-        return (dispatch) => {
-            fetch('/data/data.json')
-            .then((response) => response.json())
-            .then((data) => dispatch({
-                type: FETCHDATASUCCESS,
-                value: data
-            }));
+        return async (dispatch) => {
+            const response = await fetch('/data/data.json')
+            const json = await response.json()
+            dispatch({
+                type : FETCHDATASUCCESS,
+                value: json
+            })
         }
     }
 }
